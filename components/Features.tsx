@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react"
 import { Paintbrush, Smartphone, Gauge, Globe } from "lucide-react"
-import { cn } from "@/lib/utils"
 
 const features = [
   {
@@ -51,7 +50,8 @@ export function Features() {
   }, [])
 
   return (
-    <section 
+    <section
+      id="features" 
       ref={featuresRef}
       className="py-20 md:py-32 relative overflow-hidden"
     >
@@ -78,7 +78,7 @@ export function Features() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <div 
               key={index}
