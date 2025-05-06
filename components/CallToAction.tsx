@@ -17,7 +17,7 @@ export function CallToAction() {
           Ready to create your unique <span className="text-purple-600 dark:text-purple-400">Link1t</span> page?
         </h2>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-          Join thousands of creators, influencers, and professionals who've already made the switch.
+          Join thousands of creators, influencers, and professionals who&apos;ve already made the switch.
         </p>
         <Button asChild variant="gradient" size="xl" className="rounded-full">
           <Link href="/signup">Get Started for Free</Link>

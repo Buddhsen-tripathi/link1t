@@ -82,7 +82,7 @@ export function Features() {
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="relative group p-6 rounded-xl bg-background/50 backdrop-blur-sm border shadow-sm hover:shadow-md transition-all duration-300 animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out"
+              className="relative group p-6 rounded-xl bg-background/50 backdrop-blur-sm border shadow-sm hover:shadow-md transition-all duration-300 animate-on-scroll opacity-0 translate-y-8 ease-out"
               style={{ animationDelay: `${0.2 + index * 0.1}s` }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300" />
