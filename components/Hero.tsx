@@ -59,7 +59,7 @@ export function Hero() {
               style={{ animationDelay: "0.5s" }}
             >
               <Button asChild variant="gradient" size="xl" className="rounded-full">
-                <Link href="/signup">Create Your Link1t</Link>
+                <Link href="/dashboard">Create Your Link1t</Link>
               </Button>
               <Button asChild variant="outline" size="xl" className="rounded-full">
                 <Link href="/examples">See Examples</Link>

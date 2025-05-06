@@ -6,10 +6,12 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { Link as LinkIcon, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
+import { useUser, SignInButton, UserButton } from "@clerk/nextjs"
 
 export function Navbar() {
     const [scrolled, setScrolled] = useState(false)
     const { theme, setTheme } = useTheme()
+    const { isLoaded, isSignedIn } = useUser()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,6 +21,21 @@ export function Navbar() {
         window.addEventListener("scroll", handleScroll)
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
+
+    const AuthButton = () => {
+        if (!isLoaded) return null
+        return isSignedIn ? (
+            <UserButton
+                appearance={{
+                    elements: { userButtonAvatarBox: "h-6 w-6" }
+                }}
+            />
+        ) : (
+            <SignInButton mode="modal">
+                <Button variant="ghost">Log in</Button>
+            </SignInButton>
+        )
+    }
 
     return (
         <header
@@ -37,9 +54,7 @@ export function Navbar() {
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-4">
-                    <Button asChild variant="ghost">
-                        <Link href="/login">Log in</Link>
-                    </Button>
+                    <AuthButton />
                     <Button
                         variant="ghost"
                         size="icon"
@@ -52,11 +67,9 @@ export function Navbar() {
                     </Button>
                 </div>
 
-                {/* Mobile navigation: only theme toggle */}
-                <div className="md:hidden flex items-center">
-                    <Button asChild variant="ghost">
-                        <Link href="/login">Log in</Link>
-                    </Button>
+                {/* Mobile Navigation */}
+                <div className="md:hidden flex items-center space-x-2">
+                    <AuthButton />
                     <Button
                         variant="ghost"
                         size="icon"
