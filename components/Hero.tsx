@@ -3,9 +3,11 @@
 import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { useUser } from "@clerk/nextjs" 
 
 export function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
+  const { isSignedIn, isLoaded } = useUser()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -58,9 +60,15 @@ export function Hero() {
               className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out"
               style={{ animationDelay: "0.5s" }}
             >
-              <Button asChild variant="gradient" size="xl" className="rounded-full">
-                <Link href="/dashboard">Create Your Link1t</Link>
-              </Button>
+              {isLoaded && ( // Ensure Clerk is loaded before rendering button
+                <Button asChild variant="gradient" size="xl" className="rounded-full">
+                  {isSignedIn ? (
+                    <Link href="/dashboard">Go to Dashboard</Link>
+                  ) : (
+                    <Link href="/signup">Create Your Link1t</Link>
+                  )}
+                </Button>
+              )}
               <Button asChild variant="outline" size="xl" className="rounded-full">
                 <Link href="/examples">See Examples</Link>
               </Button>
