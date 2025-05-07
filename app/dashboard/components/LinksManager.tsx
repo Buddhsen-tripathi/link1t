@@ -42,18 +42,21 @@ export const LinksManager = ({ links, onUpdate }: LinksManagerProps) => {
   }
 
   return (
-    <Card>
+    // Added bg-card/80 backdrop-blur-sm to the main Card for consistency with dashboard background effect
+    <Card className="bg-card/80 dark:bg-card/70 backdrop-blur-sm">
       <CardHeader>
         <CardTitle className="flex items-center">
           <Link2Icon className="mr-2 h-5 w-5 text-primary" /> Manage Links
         </CardTitle>
         <CardDescription>Add, edit, reorder, and toggle your links.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-3">
+      {/* Increased space-y from 3 to 4 */}
+      <CardContent className="space-y-4">
         {links.map((link) => (
           <Card
             key={link.id}
-            className={`p-3 ${!link.enabled ? "opacity-60 bg-muted/50" : "bg-card"}`}
+            // Adjusted background of individual link cards for the new dashboard theme
+            className={`p-3 ${!link.enabled ? "opacity-60 bg-muted/40 dark:bg-muted/30" : "bg-background/50 dark:bg-background/40"} backdrop-blur-sm rounded-md shadow-sm`}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
@@ -67,14 +70,14 @@ export const LinksManager = ({ links, onUpdate }: LinksManagerProps) => {
                     type="text"
                     value={link.title}
                     onChange={(e) => handleUpdateLink({ ...link, title: e.target.value })}
-                    className="text-md font-medium border-0 focus:ring-0 p-0 h-auto bg-transparent"
+                    className="text-md font-medium border-0 focus:ring-0 mb-2 h-auto bg-transparent"
                     placeholder="Link Title"
                   />
                   <Input
                     type="url"
                     value={link.url}
                     onChange={(e) => handleUpdateLink({ ...link, url: e.target.value })}
-                    className="text-xs text-muted-foreground border-0 focus:ring-0 p-0 h-auto bg-transparent"
+                    className="text-xs text-muted-foreground border-0 focus:ring-0 h-auto bg-transparent"
                     placeholder="https://example.com"
                   />
                 </div>
@@ -105,7 +108,7 @@ export const LinksManager = ({ links, onUpdate }: LinksManagerProps) => {
         )}
       </CardContent>
       <CardFooter>
-        <Button onClick={handleAddLink} variant="outline" className="w-full">
+        <Button onClick={handleAddLink} variant="outline" className="w-full bg-background/50 hover:bg-background/70 dark:bg-background/40 dark:hover:bg-background/60 backdrop-blur-sm">
           <PlusCircle className="mr-2 h-4 w-4" /> Add New Link
         </Button>
       </CardFooter>

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Palette, Link2 as Link2Icon, Settings as SettingsIcon, Save } from "lucide-react"
 
-import type { Link1tPageData } from "./types" // Import shared types
+import type { Link1tPageData } from "./types"
 import { AppearanceSettings } from "./components/AppearanceSettings"
 import { LinksManager } from "./components/LinksManager"
 import { PageSettings } from "./components/PageSettings"
@@ -82,22 +82,29 @@ export default function DashboardPage() {
 
   if (!isLoaded) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-muted/20">
-        <p>Loading dashboard…</p>
+      <div className="relative flex items-center justify-center min-h-screen overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-background/90" />
+        <div className="absolute inset-0 -z-10 opacity-25 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:20px_20px]" />
+        <p className="p-4 bg-card/80 backdrop-blur-sm rounded-lg">Loading dashboard…</p>
       </div>
     )
   }
 
   if (!isSignedIn) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-muted/20">
-        <p>Please sign in to access the dashboard.</p>
+      <div className="relative flex items-center justify-center min-h-screen overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-background/90" />
+        <div className="absolute inset-0 -z-10 opacity-25 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:20px_20px]" />
+        <p className="p-4 bg-card/80 backdrop-blur-sm rounded-lg">Please sign in to access the dashboard.</p>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-muted/20 dark:bg-background">
+    <div className="relative min-h-screen overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-background/90" />
+      <div className="absolute inset-0 -z-10 opacity-25 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:20px_20px]" />
+
       <div className="container mx-auto px-2 sm:px-4 pt-20 pb-6 sm:pt-24 sm:pb-8">
         <header className="mb-6 flex flex-col sm:flex-row justify-between items-center">
           <div>
@@ -111,24 +118,24 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 xl:gap-8 items-start">
           <div className="lg:col-span-2 space-y-6">
             <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-3 bg-muted p-1 rounded-lg">
+              <TabsList className="grid w-full grid-cols-3 bg-muted/70 dark:bg-muted/50 backdrop-blur-sm p-1 rounded-lg">
                 <TabsTrigger
                   value="appearance"
-                  className="data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm rounded-md"
+                  className="data-[state=active]:bg-background/80 data-[state=active]:text-primary data-[state=active]:shadow-sm rounded-md"
                 >
                   <Palette className="mr-1.5 h-4 w-4 sm:mr-2" />
                   Appearance
                 </TabsTrigger>
                 <TabsTrigger
                   value="links"
-                  className="data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm rounded-md"
+                  className="data-[state=active]:bg-background/80 data-[state=active]:text-primary data-[state=active]:shadow-sm rounded-md"
                 >
                   <Link2Icon className="mr-1.5 h-4 w-4 sm:mr-2" />
-                  Links
+                  Links 
                 </TabsTrigger>
                 <TabsTrigger
                   value="settings"
-                  className="data-[state=active]:bg-background data-[state=active]:text-primary data-[state=active]:shadow-sm rounded-md"
+                  className="data-[state=active]:bg-background/80 data-[state=active]:text-primary data-[state=active]:shadow-sm rounded-md"
                 >
                   <SettingsIcon className="mr-1.5 h-4 w-4 sm:mr-2" />
                   Settings
@@ -168,7 +175,7 @@ export default function DashboardPage() {
           </div>
 
           <div
-            className="lg:col-span-1 px-4 py-6 bg-card rounded-lg shadow-md sticky top-24 self-start overflow-y-auto"
+            className="lg:col-span-1 px-4 py-6 bg-card/80 dark:bg-card/70 backdrop-blur-sm rounded-lg shadow-md sticky top-24 self-start overflow-y-auto"
             style={{ maxHeight: 'calc(100vh - 6rem)' }}
           >
             <LivePreview pageData={currentPageData} />

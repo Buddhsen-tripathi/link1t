@@ -56,7 +56,7 @@ export const PageSettings = ({ settings, onUpdate }: PageSettingsProps) => {
             </Label>
             <p className="text-xs text-muted-foreground">
               {settings.isPublic
-                ? "Your page is public and discoverable."
+                ? "Your page is public and discoverable. May take a few minutes to update."
                 : "Your page is private and only visible to you."}
             </p>
           </div>

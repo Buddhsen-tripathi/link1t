@@ -10,10 +10,16 @@ interface LivePreviewProps {
 }
 
 export const LivePreview = ({ pageData }: LivePreviewProps) => {
-  const theme = pageData.theme || { backgroundType: "color" }
+  const theme = pageData.theme || { 
+    backgroundType: "color", 
+    backgroundColor: "#FFFFFF", 
+    textColor: "#000000",       
+    font: "inherit",            
+  }
 
   const getButtonBaseClasses = () => {
-    let base = "w-full py-3 px-4 text-center font-medium transition-all duration-200 ease-in-out shadow-sm";
+    // Added 'block' to ensure each link button takes its own line
+    let base = "block w-full py-2.5 sm:py-3 px-4 text-center font-medium transition-all duration-200 ease-in-out shadow-sm";
     switch (theme.buttonStyle) {
       case "filled":
         base += " rounded-md hover:opacity-90";
@@ -39,59 +45,58 @@ export const LivePreview = ({ pageData }: LivePreviewProps) => {
   }
 
   const previewCardContentStyles: React.CSSProperties = {
-    color: theme.textColor || '#000000',
-    fontFamily: theme.font || 'inherit',
-    backgroundColor: theme.backgroundColor || '#FFFFFF',
+    color: theme.textColor,
+    fontFamily: theme.font,
+    backgroundColor: theme.backgroundType === 'color' || !theme.backgroundImageUrl ? theme.backgroundColor : undefined,
+    backgroundImage: theme.backgroundType === 'image' && theme.backgroundImageUrl ? `url(${theme.backgroundImageUrl})` : undefined,
   };
-
-  if (theme.backgroundType === 'image' && theme.backgroundImageUrl) {
-    previewCardContentStyles.backgroundImage = `url(${theme.backgroundImageUrl})`;
-  }
 
   return (
     <>
-      <Card className="w-full max-w-[300px] mx-auto shadow-xl overflow-hidden border-4 border-foreground rounded-[30px]">
-        <CardHeader className="bg-foreground p-2 text-center relative h-[20px]">
+      <Card className="w-full max-w-[300px] mx-auto shadow-xl overflow-hidden border-4 border-foreground rounded-[30px] bg-card/80 dark:bg-card/70 backdrop-blur-sm">
+        <CardHeader className="bg-foreground/80 dark:bg-foreground/70 p-2 text-center relative h-[20px] backdrop-blur-sm">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-4 bg-background/50 rounded-full"></div>
         </CardHeader>
         <CardContent
-          className="p-0 aspect-[9/19.5] overflow-y-auto bg-cover bg-center bg-no-repeat"
+          className="p-0 aspect-[9/18] overflow-y-auto bg-cover bg-center bg-no-repeat"
           style={previewCardContentStyles}
         >
-          <div className="p-5 space-y-4 text-center flex flex-col items-center min-h-full">
-            {pageData.avatarUrl ? (
-              <img
-                src={pageData.avatarUrl}
-                alt="Avatar"
-                className="h-24 w-24 rounded-full object-cover mt-4 border-4 shadow-md"
-                style={{ borderColor: pageData.avatarBorderColor || "transparent" }}
-              />
-            ) : (
-              <div
-                className="h-24 w-24 rounded-full bg-muted flex items-center justify-center mt-4 border-4 shadow-md"
-                style={{ borderColor: pageData.avatarBorderColor || "transparent" }}
-              >
-                <ImageIcon className="h-12 w-12 text-muted-foreground" />
-              </div>
-            )}
+          <div className="px-3 py-4 sm:px-4 sm:py-5 flex flex-col items-center w-full">
+            <div className="mb-3">
+              {pageData.avatarUrl ? (
+                <img
+                  src={pageData.avatarUrl}
+                  alt="Avatar"
+                  className="h-20 w-20 sm:h-24 sm:w-24 rounded-full object-cover border-4 shadow-md"
+                  style={{ borderColor: pageData.avatarBorderColor || "transparent" }}
+                />
+              ) : (
+                <div
+                  className="h-20 w-20 sm:h-24 sm:w-24 rounded-full bg-muted flex items-center justify-center border-4 shadow-md"
+                  style={{ borderColor: pageData.avatarBorderColor || "transparent" }}
+                >
+                  <ImageIcon className="h-10 w-10 sm:h-12 sm:w-12 text-muted-foreground" />
+                </div>
+              )}
+            </div>
+
             <h2
-              className="text-2xl font-bold mt-2"
-              style={{ color: theme.textColor }}
+              className="text-xl sm:text-2xl font-bold mb-1.5 sm:mb-2 text-center"
             >
               {pageData.displayName || "Your Name"}
             </h2>
+
             <p
-              className="text-sm"
-              style={{ color: theme.textColor, opacity: 0.9 }}
+              className="text-xs sm:text-sm leading-snug text-center mb-4 sm:mb-5"
             >
               {pageData.bio || "Your bio will appear here."}
             </p>
 
-            <div className="space-y-3 pt-3 w-full max-w-xs mx-auto">
+            <div className="w-full max-w-xs mx-auto space-y-3">
               {(pageData.links || [])
                 .filter((l) => l.enabled)
                 .map((link) => {
-                  const baseButtonClasses = getButtonBaseClasses();
+                  const baseButtonClasses = getButtonBaseClasses(); // This now includes 'block'
                   const dynamicButtonStyles: React.CSSProperties = theme.buttonStyle ? {
                     backgroundColor:
                       theme.buttonStyle === "filled" ||
@@ -113,7 +118,7 @@ export const LivePreview = ({ pageData }: LivePreviewProps) => {
                         : "transparent",
                     boxShadow:
                       theme.buttonStyle === "hard-shadow"
-                        ? `3px 3px 0px ${theme.buttonShadowColor || "black"}`
+                        ? `3px 3px 0px ${theme.buttonShadowColor || "#1E3A8A"}`
                         : undefined,
                   } : {};
 
@@ -131,7 +136,7 @@ export const LivePreview = ({ pageData }: LivePreviewProps) => {
                   );
                 })}
               {!(pageData.links || []).filter((l) => l.enabled).length && (
-                <p className="text-xs text-muted-foreground py-4">
+                <p className="text-xs text-muted-foreground text-center py-3 sm:py-4">
                   Your active links will appear here!
                 </p>
               )}
