@@ -32,13 +32,13 @@ export function Hero() {
   return (
     <div 
       ref={heroRef} 
-      className="relative pt-20 md:pt-24 overflow-hidden"
+      className="relative pt-16 md:pt-24 overflow-hidden"
     >
       {/* Background gradient */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-background/90" />
       <div className="absolute inset-0 -z-10 opacity-25 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:20px_20px]" />
 
-      <div className="container px-4 md:px-6 pt-10 pb-24 md:pt-14 md:pb-32 max-w-6xl mx-auto">
+      <div className="container px-4 md:px-6 pt-4 pb-24 md:pt-14 md:pb-32 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="space-y-6 text-center md:text-left order-2 md:order-1">
             <h1 
