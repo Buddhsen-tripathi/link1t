@@ -73,7 +73,7 @@ export default function TermsOfServicePage() {
 
           <h2>5. Prohibited Activities</h2>
           <p className="mb-4 mt-2">
-            [Detail specific activities that are prohibited on your platform. This could include spamming, phishing, distributing malware, impersonation, etc.]
+            Impersonating as known influencers and using platform for phishing is prohibited.
           </p>
           <p className="mb-4 mt-2">
             We reserve the right to terminate or suspend your account and access to the Service at our sole discretion, without notice, for conduct that we believe violates these Terms or is harmful to other users of the Service, us, or third parties, or for any other reason.
