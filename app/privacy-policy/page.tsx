@@ -131,7 +131,7 @@ export default function PrivacyPolicyPage() {
 
           <h2 className="mb-4">8. International Data Transfers</h2>
           <p className="mb-6">
-            Your information, including personal data, may be transferred to — and maintained on — computers located outside of your state, province, country, or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction. If you are located outside [Your Company's Country/Region] and choose to provide information to us, please note that we transfer the data, including personal data, to [Your Company's Country/Region] and process it there. Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.
+            Your information, including personal data, may be transferred to — and maintained on — computers located outside of your state, province, country, or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction. If you are located outside India and choose to provide information to us, please note that we transfer the data, including personal data, to India and process it there. Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.
           </p>
           {/* Be specific about transfer mechanisms if applicable, e.g., Standard Contractual Clauses */}
 
