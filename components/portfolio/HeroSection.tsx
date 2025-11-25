@@ -48,9 +48,6 @@ export default function Hero({ heroData }: HeroProps) {
               </div>
             )}
           </div>
-          
-          {/* Status indicator */}
-          <div className="absolute bottom-2 right-2 w-5 h-5 bg-primary rounded-full border-4 border-background shadow-lg" title="Available for opportunities" />
         </div>
 
         {/* Content */}

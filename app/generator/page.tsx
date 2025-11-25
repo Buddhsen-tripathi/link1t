@@ -301,6 +301,7 @@ export default function GeneratorPage() {
               </div>
             )}
             <PortfolioForm 
+              key={isEditMode ? 'edit-mode' : 'create-mode'}
               username={isEditMode && existingPortfolio ? existingPortfolio.slug : username} 
               onComplete={handleComplete} 
               isSubmitting={isSaving} 

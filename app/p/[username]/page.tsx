@@ -59,7 +59,7 @@ export default async function PortfolioPage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background mt-8">
       <main className="container mx-auto px-4 py-8 md:py-12 max-w-4xl">
         <section className="space-y-12 md:space-y-16">
           <Hero heroData={data.hero} />

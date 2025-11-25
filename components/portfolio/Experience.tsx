@@ -32,9 +32,6 @@ export default function Experience({ experiences }: ExperienceProps) {
               key={index} 
               className="group relative flex gap-4 md:gap-6 p-5 md:p-6 rounded-2xl bg-card hover:bg-accent/50 border border-border transition-all duration-300 hover:shadow-md"
             >
-              {/* Timeline dot */}
-              <div className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[calc(50%-1.5rem)] w-3 h-3 rounded-full bg-primary ring-4 ring-background" />
-
               {/* Logo / Icon */}
               <div className="flex-shrink-0">
                 <div className="w-14 h-14 rounded-xl bg-muted flex items-center justify-center border border-border overflow-hidden shadow-sm">
