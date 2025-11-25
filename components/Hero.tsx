@@ -3,7 +3,9 @@
 import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { useUser } from "@clerk/nextjs" 
+import { useUser } from "@clerk/nextjs"
+import { ArrowRight, Sparkles, Zap, Globe } from "lucide-react"
+import DarkVeil from "@/components/ui/DarkVeil"
 
 export function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -32,76 +34,162 @@ export function Hero() {
   return (
     <div 
       ref={heroRef} 
-      className="relative pt-16 md:pt-24 overflow-hidden"
+      className="relative min-h-screen overflow-hidden pt-12 md:pt-16 lg:pt-20"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-background/90" />
-      <div className="absolute inset-0 -z-10 opacity-25 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:20px_20px]" />
+      {/* DarkVeil background */}
+      <div className="absolute inset-0 -z-10">
+        <DarkVeil 
+          hueShift={0.08}
+          noiseIntensity={0.03}
+          scanlineIntensity={0.04}
+          speed={0.3}
+          scanlineFrequency={120}
+          warpAmount={0.02}
+          resolutionScale={1}
+        />
+        {/* Fade overlay at bottom for smooth transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black to-transparent" />
+      </div>
 
-      <div className="container px-4 md:px-6 pt-4 pb-24 md:pt-14 md:pb-32 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="space-y-6 text-center md:text-left order-2 md:order-1">
-            <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out"
-              style={{ animationDelay: "0.1s" }}
+      <div className="container px-4 md:px-6 pt-32 pb-32 md:pt-40 md:pb-48 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="space-y-10 text-center lg:text-left order-2 lg:order-1">
+            {/* Badge */}
+            <div 
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-sm font-medium mx-auto lg:mx-0"
             >
-              Your Link-in-Bio{" "}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-500">
-                Reimagined
+              <Sparkles className="w-4 h-4 text-orange-400" />
+              <span>AI-Powered Portfolio Builder</span>
+            </div>
+
+            <h1 
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.95]"
+            >
+              <span className="text-white">Developer</span>
+              <br />
+              <span className="text-white">Portfolio</span>{" "}
+              <span className="text-orange-400">
+                in Seconds
               </span>
             </h1>
+
             <p 
-              className="text-lg md:text-xl text-muted-foreground max-w-[600px] animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out" 
-              style={{ animationDelay: "0.3s" }}
+              className="text-lg md:text-xl text-white/70 max-w-[540px] leading-relaxed mx-auto lg:mx-0"
             >
-              Customize your page, share your links, stand out everywhere. The most flexible way to showcase everything you are in one place.
+              Create a stunning developer portfolio instantly. Upload your resume, let AI extract your experience, and get a shareable link to impress recruiters.
             </p>
+
             <div 
-              className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out"
-              style={{ animationDelay: "0.5s" }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              {isLoaded && ( // Ensure Clerk is loaded before rendering button
-                <Button asChild variant="gradient" size="xl" className="rounded-full">
-                  {isSignedIn ? (
-                    <Link href="/dashboard">Go to Dashboard</Link>
-                  ) : (
-                    <Link href="/signup">Create Your Link1t</Link>
-                  )}
-                </Button>
-              )}
-              <Button asChild variant="outline" size="xl" className="rounded-full">
-                <Link href="/examples">See Examples</Link>
+              <Button asChild size="lg" className="rounded-full h-14 px-8 text-base font-semibold bg-orange-500 hover:bg-orange-600 text-white border-0">
+                <Link href="/generator">
+                  {isLoaded && isSignedIn ? 'Edit Portfolio' : 'Create Your Portfolio'}
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
               </Button>
+            </div>
+
+            {/* Trust indicators */}
+            <div 
+              className="flex flex-wrap items-center gap-8 justify-center lg:justify-start pt-2"
+            >
+              <div className="flex items-center gap-2.5 text-white/60">
+                <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center">
+                  <Zap className="w-4 h-4 text-orange-400" />
+                </div>
+                <span className="text-sm font-medium">Setup in 2 minutes</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-white/60">
+                <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center">
+                  <Globe className="w-4 h-4 text-orange-400" />
+                </div>
+                <span className="text-sm font-medium">Live URL instantly</span>
+              </div>
             </div>
           </div>
           
+          {/* Portfolio Preview Card */}
           <div 
-            className="relative order-1 md:order-2 animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 ease-out"
-            style={{ animationDelay: "0.7s" }}
+            className="relative order-1 lg:order-2"
           >
-            <div className="relative mx-auto w-64 sm:w-72 md:w-80 aspect-[9/16] rounded-[2.5rem] border-[8px] border-gray-800 dark:border-gray-700 shadow-xl overflow-hidden rotate-6 hover:rotate-0 transition-all duration-300">
-              {/* Mock phone screen with Link1t preview */}
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-700">
-                <div className="flex flex-col items-center pt-8 px-4 space-y-4">
-                  <div className="w-20 h-20 rounded-full bg-gray-100 shadow-md"></div>
-                  <h3 className="text-white font-medium">@username</h3>
-                  <div className="w-full space-y-3">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div 
-                        key={i} 
-                        className="w-full h-12 rounded-md bg-white/20 backdrop-blur-sm flex items-center justify-center text-white text-opacity-90 text-sm"
-                      >
-                        Link {i}
+            <div className="relative mx-auto w-full max-w-md lg:max-w-lg">
+              {/* Decorative glow behind card */}
+              <div className="absolute -inset-4 bg-orange-500/20 rounded-3xl blur-3xl opacity-40" />
+              
+              {/* Floating badge */}
+              <div className="absolute -top-3 -right-3 z-20 px-4 py-2 rounded-full bg-white text-black text-sm font-semibold">
+                ✨ Live Preview
+              </div>
+
+              {/* Main card */}
+              <div className="relative rounded-2xl border border-white/10 overflow-hidden bg-black/60 backdrop-blur-xl">
+                {/* Browser-like header */}
+                <div className="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/10">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                  </div>
+                  <div className="flex-1 mx-4">
+                    <div className="bg-white/10 rounded-lg px-4 py-1.5 text-xs text-white/60 text-center font-medium">
+                      link1t.com/p/johndoe
+                    </div>
+                  </div>
+                </div>
+
+                {/* Portfolio content preview */}
+                <div className="p-6 space-y-5">
+                  {/* Profile section */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 rounded-2xl bg-orange-500 flex items-center justify-center text-white font-bold text-xl">
+                      JD
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-bold text-lg text-white">John Doe</h3>
+                      <p className="text-sm text-white/60">Full Stack Developer</p>
+                      <div className="flex gap-1.5 mt-2.5 flex-wrap">
+                        <span className="text-xs px-2.5 py-1 bg-orange-500/20 text-orange-400 rounded-md font-medium">React</span>
+                        <span className="text-xs px-2.5 py-1 bg-orange-500/20 text-orange-400 rounded-md font-medium">Node.js</span>
+                        <span className="text-xs px-2.5 py-1 bg-orange-500/20 text-orange-400 rounded-md font-medium">TypeScript</span>
                       </div>
-                    ))}
+                    </div>
+                  </div>
+
+                  {/* Experience preview */}
+                  <div className="space-y-2.5">
+                    <div className="flex items-center p-3 bg-white/5 rounded-xl">
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-lg bg-blue-500 flex items-center justify-center text-white text-xs font-bold">G</div>
+                        <div>
+                          <p className="font-semibold text-sm text-white">Senior Engineer</p>
+                          <p className="text-xs text-white/50">Google · 2021 - Present</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center p-3 bg-white/5 rounded-xl">
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xs font-bold">M</div>
+                        <div>
+                          <p className="font-semibold text-sm text-white">Software Engineer</p>
+                          <p className="text-xs text-white/50">Meta · 2019 - 2021</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Projects preview */}
+                  <div className="grid grid-cols-2 gap-2.5">
+                    <div className="aspect-[4/3] bg-white/5 rounded-lg flex items-center justify-center">
+                      <span className="text-sm">🚀</span>
+                    </div>
+                    <div className="aspect-[4/3] bg-white/5 rounded-lg flex items-center justify-center">
+                      <span className="text-sm">💡</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            
-            {/* Decorative elements */}
-            <div className="absolute -z-10 -bottom-10 -right-10 w-40 h-40 rounded-full bg-purple-500/30 blur-3xl"></div>
-            <div className="absolute -z-10 -top-5 -left-5 w-32 h-32 rounded-full bg-blue-500/20 blur-3xl"></div>
           </div>
         </div>
       </div>

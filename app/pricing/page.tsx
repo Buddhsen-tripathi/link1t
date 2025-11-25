@@ -93,13 +93,10 @@ export default function PricingPage() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annually">("annually") 
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-background/90" />
-      <div className="absolute inset-0 -z-10 opacity-25 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:20px_20px]" />
-
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 pt-28 pb-20 md:pt-28 md:pb-24">
         <header className="text-center mb-12 md:mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
             Choose Your Plan
           </h1>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -179,13 +176,8 @@ export default function PricingPage() {
                   <Button 
                     asChild 
                     size="lg" 
-                    className={`w-full ${
-                      plan.id === 'pro' 
-                        // Consistent gradient style for Pro plan button
-                        ? 'bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-500 text-white dark:from-purple-500 dark:to-pink-500 dark:hover:from-purple-400 dark:hover:to-pink-400' 
-                        // Style for Free plan button
-                        : 'variant-outline' 
-                    }`}
+                    variant={plan.id === 'pro' ? 'default' : 'outline'}
+                    className="w-full"
                   >
                     <Link href={currentBillingOption.ctaLink}>
                       {IconComponent && <IconComponent className="mr-2 h-5 w-5" />}

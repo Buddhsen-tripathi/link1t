@@ -23,24 +23,20 @@ export default function PrivacyPolicyPage() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* Background effect divs */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-background/90" />
-      <div className="absolute inset-0 -z-10 opacity-25 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:20px_20px]" />
-
+    <div className="relative min-h-screen overflow-hidden bg-black">
       <div className="container mx-auto px-4 pt-28 pb-20 md:pt-32 md:pb-24">
         <header className="text-center mb-12 md:mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
             Privacy Policy
           </h1>
-          <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-4 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
             Last Updated: {currentDate || "Loading..."}
           </p>
         </header>
 
-        <div className="max-w-3xl mx-auto bg-card/80 dark:bg-card/70 backdrop-blur-sm p-6 sm:p-8 rounded-lg shadow-xl border border-border prose prose-lg dark:prose-invert prose-headings:text-foreground prose-a:text-primary hover:prose-a:text-primary/80">
-          <p className="mb-4">
-            Welcome to <span className="text-purple-500">{companyName}</span> ("we," "us," or "our"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice, or our practices with regards to your personal information, please contact us at <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+        <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-lg border border-white/10 prose prose-lg prose-invert prose-headings:text-white prose-a:text-orange-400 hover:prose-a:text-orange-300 prose-strong:text-white prose-li:text-gray-300">
+          <p className="mb-4 text-gray-300">
+            Welcome to <span className="text-orange-400">{companyName}</span> ("we," "us," or "our"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice, or our practices with regards to your personal information, please contact us at <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
           </p>
           <p className="mb-6">
             This Privacy Policy governs the privacy policies and practices of our website, {websiteUrl}, and our {serviceName} (collectively, the "Service"). Please read this Privacy Policy carefully. By using our Service, you agree to the terms of this Privacy Policy.
@@ -156,8 +152,8 @@ export default function PrivacyPolicyPage() {
             <li>By email: <a href={`mailto:${contactEmail}`}>{contactEmail}</a></li>
             {/* Add other contact methods if available, e.g., mailing address */}
           </ul>
-          <p>
-            Please also review our <Link href="/terms-of-service" className="text-purple-500">Terms of Service</Link> which governs your use of our Service.
+          <p className="text-gray-300">
+            Please also review our <Link href="/terms-of-service" className="text-orange-400 hover:text-orange-300">Terms of Service</Link> which governs your use of our Service.
           </p>
         </div>
       </div>

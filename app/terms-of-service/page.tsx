@@ -22,24 +22,20 @@ export default function TermsOfServicePage() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* Background effect divs */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-background/90" />
-      <div className="absolute inset-0 -z-10 opacity-25 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:20px_20px]" />
-
+    <div className="relative min-h-screen overflow-hidden bg-black">
       <div className="container mx-auto px-4 pt-28 pb-20 md:pt-32 md:pb-24">
         <header className="text-center mb-12 md:mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
             Terms of Service
           </h1>
-          <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-4 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
             Last Updated: {currentDate || "Loading..."}
           </p>
         </header>
 
-        <div className="max-w-3xl mx-auto bg-card/80 dark:bg-card/70 backdrop-blur-sm p-6 sm:p-8 rounded-lg shadow-xl border border-border prose dark:prose-invert prose-headings:text-foreground prose-a:text-primary hover:prose-a:text-primary/80">
-          <p className="mb-4">
-            Welcome to <span className="text-purple-500">{companyName}</span>. These Terms of Service ("Terms") govern your use of our website ({websiteUrl}), and the services provided by {companyName} (collectively, the "Service"). By accessing or using our Service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our Service.
+        <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-lg border border-white/10 prose prose-invert prose-headings:text-white prose-a:text-orange-400 hover:prose-a:text-orange-300 prose-strong:text-white prose-li:text-gray-300">
+          <p className="mb-4 text-gray-300">
+            Welcome to <span className="text-orange-400">{companyName}</span>. These Terms of Service ("Terms") govern your use of our website ({websiteUrl}), and the services provided by {companyName} (collectively, the "Service"). By accessing or using our Service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our Service.
           </p>
 
           <h2>1. Acceptance of Terms</h2>
@@ -111,8 +107,8 @@ export default function TermsOfServicePage() {
             Email: <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
           </p>
 
-          <p className="mb-4 mt-2">
-            Please also review our <Link href="/privacy-policy" className="text-purple-500">Privacy Policy</Link> which describes how we collect and use your personal information.
+          <p className="mb-4 mt-2 text-gray-300">
+            Please also review our <Link href="/privacy-policy" className="text-orange-400 hover:text-orange-300">Privacy Policy</Link> which describes how we collect and use your personal information.
           </p>
         </div>
       </div>

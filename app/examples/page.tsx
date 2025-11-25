@@ -48,14 +48,10 @@ const exampleData: ExampleShowcase[] = [
 
 export default function ExamplesPage() {
   return (
-    <div className="relative min-h-screen overflow-hidden"> {/* Added relative and overflow-hidden, removed old background */}
-      {/* Added background effect divs */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-background/90" />
-      <div className="absolute inset-0 -z-10 opacity-25 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:20px_20px]" />
-
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 pt-28 pb-20 md:pt-32 md:pb-24">
         <header className="text-center mb-12 md:mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
             Discover What's Possible
           </h1>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -74,7 +70,7 @@ export default function ExamplesPage() {
                   <img
                     src={example.imageUrl}
                     alt={example.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               )}
@@ -124,14 +120,14 @@ export default function ExamplesPage() {
           ))}
         </div>
 
-        <div className="mt-20 md:mt-24 py-12 md:py-16 bg-card/70 dark:bg-card/60 backdrop-blur-sm rounded-xl shadow-inner text-center"> {/* Added backdrop-blur */}
-          <h2 className="text-3xl md:text-4xl font-semibold mb-5 text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">
+        <div className="mt-20 md:mt-24 py-12 md:py-16 bg-card/70 dark:bg-card/60 backdrop-blur-sm rounded-xl shadow-inner text-center">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-5 text-foreground">
             Ready to Create Yours?
           </h2>
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto text-md md:text-lg">
             Join thousands of others and build your perfect link-in-bio page today. It's free, fun, and fast!
           </p>
-          <Button asChild size="xl" variant="gradient" className="rounded-full shadow-lg hover:shadow-primary/30 transition-shadow">
+          <Button asChild size="xl" className="rounded-full">
             <Link href="/signup">
               Get Started Now <ArrowRight className="ml-2.5 h-5 w-5" />
             </Link>

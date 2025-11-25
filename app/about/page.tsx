@@ -6,14 +6,10 @@ import { Users, Target, BookOpen, Sparkles } from "lucide-react"
 
 export default function AboutPage() {
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* Background effect divs */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background to-background/90" />
-      <div className="absolute inset-0 -z-10 opacity-25 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:20px_20px]" />
-
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 pt-28 pb-20 md:pt-32 md:pb-24">
         <header className="text-center mb-12 md:mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
             About Link1t
           </h1>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -75,7 +71,7 @@ export default function AboutPage() {
             <p className="text-muted-foreground max-w-xl mx-auto mb-6">
               Join thousands of creators and businesses who trust Link1t to make their online presence shine.
             </p>
-            <Button asChild size="lg" className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-500 text-white dark:from-purple-500 dark:to-pink-500 dark:hover:from-purple-400 dark:hover:to-pink-400">
+            <Button asChild size="lg">
               <Link href="/signup">Get Started for Free</Link>
             </Button>
           </section>
